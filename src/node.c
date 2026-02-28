@@ -91,7 +91,9 @@ void	clear_lst(t_node **head)
 	{
 		next = current->next;
 		free(current->key);
+		current->key = NULL;
 		free(current->val);
+		current->val = NULL;
 		current->next = NULL;
 		free(current);
 		current = next;

@@ -41,6 +41,8 @@ int	clean_exit(t_hashmap *map, int exit_status)
 }
 
 // TODO: MAYBE a big area if malloc is too slow
+// FIXME: double free l. 122
+
 int	main(int argc, char *argv[])
 {
 	char	buf[BUF_SIZE];
@@ -80,7 +82,9 @@ int	main(int argc, char *argv[])
 					if (add_item(&map, saved_key, saved_value))
 					{
 						free(saved_key);
+						saved_key = NULL;
 						free(saved_value);
+						saved_value = NULL;
 						return(clean_exit(map, GENERIC_ERROR));
 					}
 					state = KEY;
@@ -100,7 +104,7 @@ int	main(int argc, char *argv[])
 					else
 					{
 						ft_putstr(current_word);
-						ft_putstr(" : Not found.");
+						ft_putstr(": Not found.");
 					}
 					ft_putstr("\n");
 				}
