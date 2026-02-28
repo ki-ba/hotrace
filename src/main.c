@@ -1,16 +1,19 @@
-#include "../inc/hotrace.h"
+#include "hotrace.h"
+#include "hashmap.h"
 #include <unistd.h>
 
-char *chill_strdup(const char *s, int len)
+char	*chill_strdup(const char *s, int len)
 {
-    char *dup = malloc(sizeof(char) * (len + 1));
-    if (!dup)
-	return NULL;
-    for (int j = 0; j < len; j++) {
+	char	*dup;
+
+	dup = malloc(sizeof(char) * (len + 1));
+	if (!dup)
+		return (NULL);
+	for (int j = 0; j < len; j++) {
 	dup[j] = s[j];
-    }
-    dup[len] = '\0';
-    return dup;
+	}
+	dup[len] = '\0';
+	return dup;
 }
 
 // state : 0 = key | 1 = value | 2 = search mode
