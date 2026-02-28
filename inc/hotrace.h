@@ -6,11 +6,7 @@
 #include <stdlib.h>
 
 #define BUF_SIZE 4096
-
-typedef struct s_node
-{
-	char			*value;
-}	t_node;
+#define MAP_CAPACITY 200
 
 
 #endif

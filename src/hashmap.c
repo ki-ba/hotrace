@@ -107,3 +107,4 @@ void	print_hashmap(t_hashmap *map)
 		++i;
 	}
 }
+
