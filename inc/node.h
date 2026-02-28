@@ -1,41 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hotrace.h                                          :+:      :+:    :+:   */
+/*   node.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kbarru <kbarru@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/28 13:57:22 by kbarru            #+#    #+#             */
-/*   Updated: 2026/02/28 19:19:08 by kbarru           ###   ########lyon.fr   */
+/*   Created: 2026/02/28 17:44:38 by kbarru            #+#    #+#             */
+/*   Updated: 2026/02/28 18:29:13 by kbarru           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HOTRACE_H
-# define HOTRACE_H
+#ifndef NODE_H
+# define NODE_H
 
-# include <unistd.h>
-
-typedef enum e_status
+typedef struct s_node
 {
-	SUCCESS = 0,
-	GENERIC_ERROR = 1,
-	ERR_ALLOC = 3
-}	t_status;
+	char			*key;
+	char			*val;
+	struct s_node	*next;
+}	t_node;
 
-typedef enum e_state
-{
-	KEY = 0,
-	VAL = 1,
-	SEARCH = 2
-}	t_state;
-
-typedef enum e_bool
-{
-	FALSE = 0,
-	TRUE = 1
-}	t_bool;
-
-# define BUF_SIZE 4096
-# define MAP_CAPACITY 2e5
+t_node	*new_node(char *key, char *val);
+t_node	*last(t_node *node);
+int		add_back(t_node **head, t_node *new);
+void	clear_lst(t_node **head);
 
 #endif

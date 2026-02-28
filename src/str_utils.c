@@ -1,41 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hotrace.h                                          :+:      :+:    :+:   */
+/*   str_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kbarru <kbarru@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/28 13:57:22 by kbarru            #+#    #+#             */
-/*   Updated: 2026/02/28 19:19:08 by kbarru           ###   ########lyon.fr   */
+/*   Created: 2026/02/28 18:33:07 by kbarru            #+#    #+#             */
+/*   Updated: 2026/02/28 18:34:16 by kbarru           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HOTRACE_H
-# define HOTRACE_H
+#include <stddef.h>
 
-# include <unistd.h>
-
-typedef enum e_status
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	SUCCESS = 0,
-	GENERIC_ERROR = 1,
-	ERR_ALLOC = 3
-}	t_status;
+	size_t	i;
 
-typedef enum e_state
-{
-	KEY = 0,
-	VAL = 1,
-	SEARCH = 2
-}	t_state;
-
-typedef enum e_bool
-{
-	FALSE = 0,
-	TRUE = 1
-}	t_bool;
-
-# define BUF_SIZE 4096
-# define MAP_CAPACITY 2e5
-
-#endif
+	i = 0;
+	while (i < n && s1[i])
+	{
+		if ((unsigned char)s1[i] > (unsigned char)s2[i])
+			return (1);
+		else if ((unsigned char)s1[i] < (unsigned char)s2[i])
+			return (-1);
+		++i;
+	}
+	if (i < n && s2[i])
+		return (-1);
+	return (0);
+}

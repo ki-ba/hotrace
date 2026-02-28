@@ -14,7 +14,7 @@ OBJS    := $(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 
 HEADERS := -I $(INC_DIR)
 
-SRCS = main.c hashmap.c alloc_utils.c print_utils.c
+SRCS = main.c hashmap.c hashmap_utils.c alloc_utils.c print_utils.c str_utils.c node.c
 OBJS = $(addprefix $(OBJ_DIR), $(SRCS:.c=.o))
 DEPS = $(OBJS:.o=.d)
 
