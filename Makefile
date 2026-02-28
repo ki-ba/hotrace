@@ -40,8 +40,12 @@ fclean: clean
 
 re: fclean all
 
+TEST_FILENAME = test.txt
+OUTPUT_FILENAME = output.txt
+
 test: all
 	$(CC) $(CFLAGS) testfilegen.c -o testfilegen.out
 	./testfilegen.out
+	./$(NAME) < $(TEST_FILENAME) > $(OUTPUT_FILENAME)
 
 .PHONY: all clean fclean re

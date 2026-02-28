@@ -6,7 +6,7 @@
 /*   By: kbarru <kbarru@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/28 14:20:34 by kbarru            #+#    #+#             */
-/*   Updated: 2026/02/28 16:01:54 by kbarru           ###   ########lyon.fr   */
+/*   Updated: 2026/02/28 17:11:38 by kbarru           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int main(void)
 				else if (state == 1)
 				{
 					char *saved_value = chill_strdup(current_word, word_len);
-					add_item(map, saved_key, saved_value);
+					add_item(&map, saved_key, saved_value);
 					state = 0;
 				}
 				else if (state == 0)
@@ -101,7 +101,7 @@ int main(void)
 			i++;
 		}
 	}
-	print_hashmap(map);
+	// print_hashmap(map);
 	destroy_hashmap(map);
 	// if (saved_key)
 	// 	free(saved_key);

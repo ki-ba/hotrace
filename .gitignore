@@ -1,3 +1,8 @@
 hotrace
+.cache
 *.o
 *.d
+*.json
+*.txt
+*.out
+make_output

@@ -6,7 +6,7 @@
 /*   By: kbarru <kbarru@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/28 11:14:58 by kbarru            #+#    #+#             */
-/*   Updated: 2026/02/28 16:06:12 by kbarru           ###   ########lyon.fr   */
+/*   Updated: 2026/02/28 16:53:12 by kbarru           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,9 @@ typedef struct s_hashmap
 }	t_hashmap;
 
 t_hashmap	*create_hashmap(size_t capacity);
-t_hashmap	*double_capacity(t_hashmap *map);
-t_hashmap	*add_item(t_hashmap *map, char *key, char *val);
+void		double_capacity(t_hashmap **map);
+void		add_item(t_hashmap **map, char *key, char *val);
+void		add_entry(t_hashmap *map, char *key, char *val);
 void		destroy_hashmap(t_hashmap *map);
 size_t		hash_function(const char *str, size_t capacity);
 
