@@ -13,7 +13,7 @@
 #ifndef PRINT_UTILS_H
 # define PRINT_UTILS_H
 
-#include "hashmap.h"
+# include "hashmap.h"
 
 void	ft_putstr(char *s);
 void	print_hashmap(t_hashmap *map);

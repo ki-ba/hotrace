@@ -24,9 +24,8 @@ typedef struct s_hashmap
 
 t_hashmap	*create_hashmap(size_t capacity);
 t_hashmap	*double_capacity(t_hashmap *map);
-void	add_item(t_hashmap *map, char *key, char *val);
-void	print_hashmap(t_hashmap *map);
-void	destroy_hashmap(t_hashmap *map);
-size_t	hash_function(const char *str, size_t capacity);
+void		add_item(t_hashmap *map, char *key, char *val);
+void		destroy_hashmap(t_hashmap *map);
+size_t		hash_function(const char *str, size_t capacity);
 
 #endif

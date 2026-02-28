@@ -91,20 +91,3 @@ void	destroy_hashmap(t_hashmap *map)
 	free(map->array);
 	free(map);
 }
-
-void	print_hashmap(t_hashmap *map)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < map->capacity)
-	{
-		if (map->array[i])
-			ft_putstr(map->array[i]);
-		else
-			ft_putstr("[void]");
-		ft_putstr("\n");
-		++i;
-	}
-}
-

@@ -40,4 +40,8 @@ fclean: clean
 
 re: fclean all
 
+test: all
+	$(CC) $(CFLAGS) testfilegen.c -o testfilegen.out
+	./testfilegen.out
+
 .PHONY: all clean fclean re

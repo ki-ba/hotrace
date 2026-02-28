@@ -12,20 +12,39 @@
 
 #include <stddef.h>
 #include <unistd.h>
+#include "hashmap.h"
 
-static size_t ft_strlen(const char *s) {
-  int i;
+static size_t	ft_strlen(const char *s)
+{
+	int	i;
 
-  if (!s)
-    return (0);
-  i = 0;
-  while (s[i])
-    ++i;
-  return (i);
+	if (!s)
+		return (0);
+	i = 0;
+	while (s[i])
+		++i;
+	return (i);
 }
 
-void ft_putstr(char *s) {
-  if (!s)
-    return;
-  write(1, s, ft_strlen(s));
+void	ft_putstr(char *s)
+{
+	if (!s)
+		return ;
+	write(1, s, ft_strlen(s));
+}
+
+void	print_hashmap(t_hashmap *map)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < map->capacity)
+	{
+		if (map->array[i])
+			ft_putstr(map->array[i]);
+		else
+			ft_putstr("[void]");
+		ft_putstr("\n");
+		++i;
+	}
 }
