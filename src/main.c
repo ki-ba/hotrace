@@ -1,33 +1,64 @@
-#include "hotrace.h"
+#include "../inc/hotrace.h"
+#include <unistd.h>
 
-int ft_strlen(char *str)
+char *chill_strdup(const char *s, int len)
 {
-    int i;
-
-    i = 0;
-    while (str[i]) {
-	i++;
+    char *dup = malloc(sizeof(char) * (len + 1));
+    if (!dup)
+	return NULL;
+    for (int j = 0; j < len; j++) {
+	dup[j] = s[j];
     }
-    return (i);
+    dup[len] = '\0';
+    return dup;
 }
 
-int ft_strncmp(const char *s1, const char *s2, size_t n)
+// state : 0 = key | 1 = value | 2 = search mode
+//TODO: MAYBE a big area if malloc is too slow
+
+int main()
 {
-    size_t i;
-    unsigned char *t1;
-    unsigned char *t2;
+    char buf[BUF_SIZE];
+    ssize_t bytes_read;
+    int state;
+    int word_len;
+    char current_word[BUF_SIZE];
+    char *saved_key = NULL;
 
-    t1 = (unsigned char *)s1;
-    t2 = (unsigned char *)s2;
-    i = 0;
-    while (i < n) {
-	if (t1[i] != t2[i])
-	    return (t1[i] - t2[i]);
-	if (t1[i] == '\0')
-	    return (0);
-	i++;
+    word_len = 0;
+    state = 0;
+    while ((bytes_read = read(STDIN_FILENO, buf, BUF_SIZE)) > 0) {
+
+	ssize_t i = 0;
+	while (i < bytes_read) {
+
+	    if (buf[i] == '\n') {
+		current_word[word_len] = '\0';
+
+		if (word_len == 0 && state != 2) {
+		    state = 2;
+		} else if (state == 1) {
+		    char *saved_value = chill_strdup(current_word, word_len);
+		    // TODO: HASH the saved_key && insert saved_value
+			free(saved_key);
+			free(saved_value);
+		    state = 0;
+		} else if (state == 0) {
+		    saved_key = chill_strdup(current_word, word_len);
+		    state = 1;
+		} else if (state == 2 && word_len > 0) {
+		    // TODO: Search current word in the hash map
+		}
+
+		word_len = 0;
+
+	    } else {
+		current_word[word_len] = buf[i];
+		word_len++;
+	    }
+
+	    i++;
+	}
     }
-    return (0);
+    return 0;
 }
-
-int main(int argc, char const **argv) { return 0; }
