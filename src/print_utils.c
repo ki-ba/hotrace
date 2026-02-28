@@ -6,7 +6,7 @@
 /*   By: kbarru <kbarru@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/28 12:03:44 by kbarru            #+#    #+#             */
-/*   Updated: 2026/02/28 13:37:22 by kbarru           ###   ########lyon.fr   */
+/*   Updated: 2026/02/28 15:07:27 by kbarru           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@ void	ft_putstr(char *s)
 	write(1, s, ft_strlen(s));
 }
 
+void	print_node(t_node node)
+{
+	ft_putstr(node.key);
+	ft_putstr(":");
+	ft_putstr(node.val);
+}
 void	print_hashmap(t_hashmap *map)
 {
 	size_t	i;
@@ -40,11 +46,11 @@ void	print_hashmap(t_hashmap *map)
 	i = 0;
 	while (i < map->capacity)
 	{
-		if (map->array[i])
-			ft_putstr(map->array[i]);
-		else
-			ft_putstr("[void]");
-		ft_putstr("\n");
+		if (map->array[i].key)
+		{
+			print_node(map->array[i]);
+			ft_putstr("\n");
+		}
 		++i;
 	}
 }
