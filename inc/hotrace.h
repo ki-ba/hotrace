@@ -14,6 +14,7 @@
 # define HOTRACE_H
 
 # include <unistd.h>
+# include "hashmap.h"
 
 typedef enum e_status
 {
@@ -37,5 +38,13 @@ typedef enum e_bool
 
 # define BUF_SIZE 4096
 # define MAP_CAPACITY 2e5
+
+typedef struct s_main_state
+{
+	int			state;
+	int			word_len;
+	char		*saved_key;
+	t_hashmap	*map;
+}	t_main_state;
 
 #endif
