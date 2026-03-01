@@ -1,6 +1,6 @@
 NAME = hotrace
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -MMD -g
+CFLAGS = -Wall -Wextra -Werror -MMD
 
 OBJ_DIR := .obj/
 
@@ -26,13 +26,5 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
-TEST_FILENAME = test.txt
-OUTPUT_FILENAME = output.txt
-
-test: all
-	$(CC) $(CFLAGS) testfilegen.c -o testfilegen.out
-	./testfilegen.out
-	./$(NAME) < $(TEST_FILENAME) > $(OUTPUT_FILENAME)
 
 .PHONY: all clean fclean re
