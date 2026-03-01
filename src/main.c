@@ -16,41 +16,6 @@
 #include <print_utils.h>
 #include <stdlib.h>
 
-char	*chill_strdup(const char *s, int len)
-{
-	char	*dup;
-	int		j;
-
-	j = 0;
-	dup = malloc(sizeof(char) * (len + 1));
-	if (!dup)
-		return (NULL);
-	while (j < len)
-	{
-		dup[j] = s[j];
-		j++;
-	}
-	dup[len] = '\0';
-	return (dup);
-}
-
-int	clean_exit(t_hashmap *map, int exit_status)
-{
-	destroy_hashmap(map);
-	return (exit_status);
-}
-
-static int	init_state(t_main_state *st)
-{
-	st->word_len = 0;
-	st->state = KEY;
-	st->saved_key = NULL;
-	st->map = create_hashmap(MAP_CAPACITY);
-	if (!st->map)
-		return (0);
-	return (1);
-}
-
 static void	handle_search(t_main_state *st, char *word)
 {
 	int	hash;

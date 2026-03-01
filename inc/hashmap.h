@@ -25,11 +25,16 @@ typedef struct s_hashmap
 	t_node	**array;
 }	t_hashmap;
 
+struct	s_main_state;
+
 t_hashmap	*create_hashmap(size_t capacity);
 int			double_capacity(t_hashmap **map);
 int			add_item(t_hashmap **map, char *key, char *val);
 int			add_entry(t_hashmap *map, char *key, char *val);
 void		destroy_hashmap(t_hashmap *map);
 size_t		hash_function(const char *str, size_t capacity);
+int			init_state(struct s_main_state *st);
+char		*chill_strdup(const char *s, int len);
+int			clean_exit(t_hashmap *map, int exit_status);
 
 #endif
