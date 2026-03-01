@@ -2,17 +2,7 @@ NAME = hotrace
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -MMD -g
 
-SRC_DIR := src/
 OBJ_DIR := .obj/
-INC_DIR := inc/
-
-SRC     := $(addprefix $(SRC_DIR), \
-               main.c \
-           )
-
-OBJS    := $(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
-
-HEADERS := -I $(INC_DIR)
 
 SRCS = main.c hashmap.c hashmap_utils.c alloc_utils.c print_utils.c str_utils.c node.c
 OBJS = $(addprefix $(OBJ_DIR), $(SRCS:.c=.o))
@@ -23,12 +13,9 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+$(OBJ_DIR)%.o: %.c
 	@mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@
-
-$(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 -include $(DEPS)
 

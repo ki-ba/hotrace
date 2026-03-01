@@ -13,7 +13,7 @@
 #include "hotrace.h"
 #include "hashmap.h"
 #include <unistd.h>
-#include <print_utils.h>
+#include "print_utils.h"
 #include <stdlib.h>
 
 static void	handle_search(t_main_state *st, char *word)
